@@ -1115,8 +1115,8 @@ namespace viennacl
           source.append("  for (unsigned int i = get_global_id(0); i < size; i += get_global_size(0)) { \n");
           source.append("    "); source.append(numeric_string); source.append(" value_result = result[i] + coefficients[0] * residual[i]; \n");
           source.append("     \n");
-          source.append("    for (unsigned int j = 0; j < k; ++j) \n");
-          source.append("      value_result += coefficients[j+1] * krylov_basis[i + j*internal_size]; \n");
+          source.append("    for (unsigned int j = 1; j < k; ++j) \n");
+          source.append("      value_result += coefficients[j] * krylov_basis[i + (j-1)*internal_size]; \n");
           source.append("     \n");
           source.append("    result[i] = value_result; \n");
           source.append("  }  \n");
