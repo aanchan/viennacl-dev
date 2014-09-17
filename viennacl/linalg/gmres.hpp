@@ -297,9 +297,9 @@ namespace viennacl
         for (int i=static_cast<int>(k)-1; i>-1; --i)
         {
           for (vcl_size_t j=static_cast<vcl_size_t>(i)+1; j<k; ++j)
-            host_values_eta_k_buffer[i] -= device_buffer_R[i + j*k] * host_values_eta_k_buffer[j];
+            host_values_eta_k_buffer[i] -= host_buffer_R[i + j*k] * host_values_eta_k_buffer[j];
 
-          host_values_eta_k_buffer[i] /= device_buffer_R[i + i*k];
+          host_values_eta_k_buffer[i] /= host_buffer_R[i + i*k];
         }
 
         //
